@@ -1,7 +1,6 @@
 body {
     margin: 0;
-    font-family: 'Ubuntu';
-    font-size: 22px;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 22px;
     background: linear-gradient(90deg, #f06292, #f7e0b3);
     background-size: 200% 200%;
@@ -10,11 +9,8 @@ body {
     text-align: center;
     padding: 20px;
     position: relative;
-    /* Aggiunto per posizionare le onde */
     min-height: 100vh;
-    /* Aggiunto per assicurarsi che il body occupi l'intera altezza della pagina */
     overflow-x: hidden;
-    /* Aggiunto per evitare lo scorrimento orizzontale */
 }
 
 @keyframes gradient-animation {
@@ -62,7 +58,6 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
 }
 
 button:hover {
@@ -79,14 +74,12 @@ li {
     margin: 10px auto;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.3);
-    /* Semitrasparente bianco */
     border-radius: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 60%;
     box-sizing: border-box;
-    /* Gestione corretta del layout */
 }
 
 .task-text,
@@ -110,10 +103,8 @@ input[type="time"] {
     width: 80px;
 }
 
-/* Aggiungiamo bordi arrotondati e un'ombra leggera per il rettangolo */
 li {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Aggiunge un'ombra leggera */
 }
 
 input[type="text"],
@@ -128,20 +119,14 @@ button {
 
 .waves {
     position: fixed;
-    /* Cambiato da absolute a fixed */
     bottom: 0;
-    /* Posiziona le onde in fondo alla pagina */
     width: 100%;
-    /* Assicura che le onde si adattino alla larghezza della pagina */
     height: 15vh;
     margin-bottom: -7px;
-    /*Fix for safari gap*/
     min-height: 100px;
     max-height: 150px;
     left: 0;
-    /* Aggiunto per evitare lo spostamento a destra */
     z-index: -1;
-    /* Aggiunto per assicurarsi che le onde siano dietro il contenuto */
 }
 
 .content {
@@ -150,8 +135,6 @@ button {
     text-align: center;
     background-color: white;
 }
-
-/* Animation */
 
 .parallax>use {
     animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
@@ -187,8 +170,55 @@ button {
     }
 }
 
-/*Shrinking for mobile*/
+/* Media Queries per dispositivi mobili */
 @media (max-width: 768px) {
+    body {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    form {
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    #task-input,
+    #task-start,
+    #task-end {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+    }
+
+    ul {
+        width: 100%;
+    }
+
+    li {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-text,
+    .task-time {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
     .waves {
         height: 40px;
         min-height: 40px;
