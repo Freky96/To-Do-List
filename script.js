@@ -5,27 +5,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const taskEndTime = document.getElementById('task-end');
   const taskList = document.getElementById('task-list');
 
-  // Carica le task dal localStorage
   const loadTasks = () => {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.forEach(task => addTaskToDOM(task.text, task.startTime, task.endTime));
   };
 
-  // Salva la task nel localStorage
   const saveTask = (text, startTime, endTime) => {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.push({ text, startTime, endTime });
     localStorage.setItem('tasks', JSON.stringify(tasks));
   };
 
-  // Rimuovi la task dal localStorage
   const removeTaskFromStorage = (text) => {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const updatedTasks = tasks.filter(task => task.text !== text);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
-  // Aggiungi la task al DOM
   const addTaskToDOM = (text, startTime, endTime) => {
     const li = document.createElement('li');
     li.className = 'task-item';
@@ -40,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const editButton = document.createElement('button');
     editButton.textContent = 'Edit';
+    editButton.className = 'edit-button';
     editButton.addEventListener('click', () => {
       const newTask = prompt('Edit task:', text);
       const newStartTime = prompt('Edit start time:', startTime);
@@ -54,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
+    deleteButton.className = 'delete-button';
     deleteButton.addEventListener('click', () => {
       taskList.removeChild(li);
       removeTaskFromStorage(text);
@@ -66,14 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     taskList.appendChild(li);
 
-    // Ordina la lista ogni volta che viene aggiunta una task
     sortTasks();
-
-    // Imposta il focus sull'input del task
     document.getElementById('task-input').focus();
   };
 
-  // Ordina le task nel DOM in base all'orario di inizio
   const sortTasks = () => {
     const tasks = Array.from(taskList.getElementsByClassName('task-item'));
 
@@ -87,17 +81,15 @@ document.addEventListener('DOMContentLoaded', () => {
       return aHour !== bHour ? aHour - bHour : aMinute - bMinute;
     });
 
-    tasks.forEach(task => taskList.appendChild(task));  // Riordina gli elementi nel DOM
+    tasks.forEach(task => taskList.appendChild(task));
   };
 
-  // Gestisci l'invio del form
   taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const text = taskInput.value;
     const startTime = taskStartTime.value;
     const endTime = taskEndTime.value;
 
-    // Verifica che i campi siano stati riempiti
     if (text && startTime && endTime) {
       addTaskToDOM(text, startTime, endTime);
       saveTask(text, startTime, endTime);
@@ -109,6 +101,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Carica le task all'inizio
   loadTasks();
 });
