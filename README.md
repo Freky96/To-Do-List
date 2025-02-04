@@ -1,6 +1,6 @@
 # To Do List
 [Link Here](https://todolist-freky96.netlify.app/)
-![image](https://github.com/user-attachments/assets/c235d441-d327-4fdc-9509-f52fb1446d49)
+![image](https://raw.githubusercontent.com/Freky96/To-Do-List/refs/heads/master/Todo-List-img.png)
 A simple web app to manage your daily tasks.
 
 ## Features
