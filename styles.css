@@ -14,15 +14,9 @@ body {
 }
 
 @keyframes gradient-animation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 h1 {
@@ -45,82 +39,80 @@ form {
 #task-start,
 #task-end {
     width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-    margin: 5px 0;
+    max-width: 500px;
+    padding: 12px;
     border: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    color: grey;
+    border-radius: 8px;
     background: #f7e0b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+    margin: 5px auto;
 }
 
-button {
+button[type="submit"] {
     width: 100%;
-    max-width: 100%;
-    padding: 10px 20px;
+    max-width: 500px;
+    padding: 12px;
     background-color: #ac0e42;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 16px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 5px auto;
 }
 
-.edit-button {
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 500px;
+    width: 90%;
+}
+
+.task-item {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    margin: 15px 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-text {
+    font-size: 20px;
     margin-bottom: 5px;
 }
 
-.delete-button {
-    margin-bottom: 0;
-}
-
-button:hover {
-    background-color: #ac0e42;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin: 10px auto;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 60%;
-    box-sizing: border-box;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.task-text,
 .task-time {
-    flex: 1;
-    border: none;
-    background: transparent;
-    padding: 5px;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
 }
 
-.task-text[readonly],
-.task-time[readonly] {
-    color: black;
-}
-
-input[type="time"] {
-    width: 80px;
-}
-
-input[type="text"],
-input[type="time"] {
-    border-radius: 5px;
+.edit-button,
+.delete-button {
+    width: 100%;
     padding: 10px;
+    margin: 5px 0;
+    background-color: #ac0e42;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #8c0a35;
 }
 
 .waves {
@@ -133,13 +125,6 @@ input[type="time"] {
     max-height: 150px;
     left: 0;
     z-index: -1;
-}
-
-.content {
-    position: relative;
-    height: 20vh;
-    text-align: center;
-    background-color: white;
 }
 
 .parallax > use {
@@ -167,12 +152,8 @@ input[type="time"] {
 }
 
 @keyframes move-forever {
-    0% {
-        transform: translate3d(-90px, 0, 0);
-    }
-    100% {
-        transform: translate3d(85px, 0, 0);
-    }
+    0% { transform: translate3d(-90px, 0, 0); }
+    100% { transform: translate3d(85px, 0, 0); }
 }
 
 @media (max-width: 768px) {
@@ -186,44 +167,26 @@ input[type="time"] {
     }
 
     form {
-        width: 100%;
-        margin: 10px auto;
+        width: 95%;
     }
 
     #task-input,
     #task-start,
-    #task-end {
-        width: 100%;
-        margin: 5px 0;
-    }
-
-    button {
-        width: 100%;
-        padding: 10px;
-    }
-
-    ul {
+    #task-end,
+    button[type="submit"] {
         width: 100%;
     }
 
-    li {
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
+    .task-text {
+        font-size: 18px;
     }
 
-    .task-text,
     .task-time {
-        width: 100%;
-        margin: 5px 0;
+        font-size: 16px;
     }
 
     .waves {
         height: 40px;
         min-height: 40px;
-    }
-
-    .content {
-        height: 30vh;
     }
 }
