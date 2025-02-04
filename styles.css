@@ -2,8 +2,10 @@ body {
     margin: 0;
     font-family: 'Ubuntu', sans-serif;
     font-size: 22px;
+    background: #f06292; /* Fallback */
     background: linear-gradient(90deg, #f06292, #f7e0b3);
     background-size: 200% 200%;
+    -webkit-animation: gradient-animation 5s ease infinite;
     animation: gradient-animation 5s ease infinite;
     color: black;
     text-align: center;
@@ -11,6 +13,7 @@ body {
     position: relative;
     min-height: 100vh;
     overflow-x: hidden;
+    will-change: background-position, transform;
 }
 
 @keyframes gradient-animation {
@@ -18,7 +21,19 @@ body {
         background-position: 0% 50%;
     }
     50% {
-        background-position: 100% 50%;
+        transform: translateX(-50%);
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@-webkit-keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        -webkit-transform: translateX(-50%);
     }
     100% {
         background-position: 0% 50%;
